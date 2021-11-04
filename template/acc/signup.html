@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container mt-5 mb-5" style="width: 75%">
+        <h1>SIGN UP</h1>
+        <div class="input-group input-group-lg mt-4">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Username</span>
+            <input type="text" name="username" class="form-control" placeholder="Username 을 입력하세요" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+        <div class="input-group input-group-lg mt-3">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Password</span>
+            <input type="password" name="password" class="form-control" placeholder="Password 를 입력하세요" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+        <div class="input-group input-group-lg mt-3">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Comment</span>
+            <textarea class="form-control" style="height: 200px;" name="comment"></textarea>
+        </div>
+        <div class="input-group input-group-lg mt-3">
+            <input type="file" name="pic" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+        <div class="mt-4 text-end">
+            <button class="btn btn-primary">계정생성</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

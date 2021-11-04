@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container mt-5 mb-5" style="width: 70%">
+        <h1><b>정보변경</b></h1>
+        <div class="input-group input-group-lg mt-5" >
+            <span class="input-group-text" id="inputGroup-sizing-lg">Username</span>
+            <input type="text" value="{{user.username}}" disabled class="form-control" placeholder="Username 을 입력하세요" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+        <div class="input-group input-group-lg mt-4">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Password</span>
+            <input type="password" name="password" class="form-control" placeholder="Password 를 입력하세요" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+        <div class="input-group input-group-lg mt-4">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Comment</span>
+            <textarea class="form-control" style="height: 200px;" name="comment">{{ user.comment }}</textarea>
+        </div>
+        <div class="input-group input-group-lg mt-4">
+            <input type="file" name="pic" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+        <div class="mt-4 text-end">
+            <button class="btn btn-secondary">계정수정</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

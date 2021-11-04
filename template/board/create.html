@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="container mt-5 mb-5" style="width: 75%">
+        <h1>게시글 생성</h1>
+        <div class="input-group input-group-lg mt-4">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Subject</span>
+            <input type="text" name="subject" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+        <div class="input-group input-group-lg mt-3">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Content</span>
+            <textarea class="form-control" style="height: 200px;" name="content"></textarea>
+        </div>
+        <div class="mt-4 text-end">
+            <button class="btn btn-outline-primary">게시글생성</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

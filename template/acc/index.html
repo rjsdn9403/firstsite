@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST" action="{% url 'acc:userlogin' %}">
+    {% csrf_token %}
+    <div class="container mt-5 mb-5" style="width: 75%">
+        <h1>LOG IN</h1>
+        <div class="input-group input-group-lg mt-4">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Username</span>
+            <input type="text" name="username" class="form-control" placeholder="Input Username" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+        <div class="input-group input-group-lg mt-3">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Password</span>
+            <input type="password" name="password" class="form-control" placeholder="Input Password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+        <div class="mt-4 text-end">
+            <button class="btn btn-outline-primary">LOG IN</button>
+        </div>
+    </div>
+</form>
+{% endblock%}

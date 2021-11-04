@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2><b>{{ b.subject }}</b></h2>
+
+    <div class="row mt-5">
+        <div class="col-lg-10">
+            <textarea disabled class="form-control" style="height: 200px;">{{ b.content }}</textarea>
+        </div>
+
+        <div class="col-lg-2 text-center">
+            <img src="{{pic}}" class="rounded-circle" width="150px">
+            <p class="mt-3">
+                <b> by {{ b.writer }} </b>
+            </p>
+        </div>
+    </div>
+    <div class="mt-5 text-end">
+        {% if b.writer == user.username %}
+            <a href="{% url 'board:modify' b.id %}"><button class="btn btn-success">수정</button></a>
+            <a href="{% url 'board:delete' b.id %}"><button class="btn btn-danger">삭제</button></a>
+        {% else %}
+            {% if request.user in b.up.all %}
+            <a href="{% url 'board:removeup' b.id %}"><button class="btn btn-outline-danger">Up취소</button></a>
+            {% else %}
+                <a href="{% url 'board:addup' b.id %}"><button class="btn btn-outline-success">Up</button></a>
+            {% endif %}
+        {% endif %}    
+            <a href="{% url 'board:index' %}"><button class="btn btn-outline-primary">HOME</button></a>
+    </div> 
+</div>
+{% endblock %}

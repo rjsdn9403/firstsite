@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+
+    <h1>INFO</h1>
+    <div class="mt-5 text-center">
+        <img class="rounded-circle" src="{{ user.getpic }}">
+    </div>
+
+    <div class="input-group input-group-lg mt-4">
+        <span class="input-group-text" id="inputGroup-sizing-lg" style="background-color: rgb(224, 250, 209);">Username</span>
+        <input type="text" class="form-control" disabled value="{{user.username}}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+    </div>
+    <div class="input-group input-group-lg mt-3">
+        <span class="input-group-text" id="inputGroup-sizing-lg" style="background-color: rgb(224, 250, 209);">Comment</span>
+        <textarea class="form-control" style="height: 200px;" disabled >{{ user.comment }}</textarea>
+    </div>
+    <div class="input-group input-group-lg mt-3">
+        <span class="input-group-text" id="inputGroup-sizing-lg" style="background-color: rgb(224, 250, 209);">POINT</span>
+        <input type="text" class="form-control" disabled value="{{user.point}} P" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+    </div>
+    <div class="text-end mt-3 mb-5">
+        <a href="{% url 'acc:usermod' %}"><button class="btn btn-primary">프로필수정</button></a>
+    
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            계정삭제
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">계정삭제</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    정말로 삭제하시겠습니까?
+                </div>
+                <div class="modal-footer">
+                    <a href="{% url 'acc:userdel' %}"><button type="button" class="btn btn-danger">삭제하기</button></a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니오</button>
+                </div>
+            </div>
+            </div>
+        </div>     
+    </div>
+</div>
+{% endblock %}
